@@ -1,0 +1,24 @@
+az login
+
+#вот эти две строки надо запустить по очереди... Сначала создать ресурсную группу:
+az group create --name HANADeploymentRG --location "West Europe"
+#потом создать ресурсы в ресурсной группе
+az group deployment create \
+    --name HANADeployment \
+    --resource-group HANADeploymentRG \
+    --template-uri "https://raw.githubusercontent.com/avistavkin/SAP-HANA-ARM-ANDVIS/master/azuredeploy.json" \
+    --parameters HanaVersion='SAP HANA PLATFORM EDITION 2.0 SPS02 (51052325)' VMName=HANAtestVM1 HANAJumpbox=yes 
+    VMSize="Standard_E32s_v3 (256 GB)" customURI=https://sapinstaller.blob.core.windows.net/sapmediastaging VMPassword=Han@4u123
+
+
+
+    VMName=HANAtestVM HANAJumpbox=yes customURI=https://saphanastoragesakisdemo1.blob.core.windows.net/sapmediastaging VMPassword=P@ss1word1234
+
+
+
+
+
+
+
+
+sapinstaller.blob.core.windows.net/sapmediastaging VMPassword=Han@4u123
